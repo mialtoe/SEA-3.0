@@ -6,14 +6,14 @@
 			"nachname": "Paulsen"
 		},
 		{
-			"anrede": "Herr",
-			"vorname":  "Paul",
-			"nachname": "Paulsen"
+			"anrede": "Frau",
+			"vorname":  "Sabine",
+			"nachname": "Christiansen"
 		},
 		{
-			"anrede": "Herr",
-			"vorname": "Paul",
-			"nachname": "Paulsen"
+			"anrede": "Keine",
+			"vorname": "Karl",
+			"nachname": "Napp"
 		}
 	]
 }
