@@ -1,0 +1,19 @@
+{
+	"personen": [
+		{
+			"anrede": "Herr",
+			"vorname": "Paul",
+			"nachname": "Paulsen"
+		},
+		{
+			"anrede": "Herr",
+			"vorname":  "Paul",
+			"nachname": "Paulsen"
+		},
+		{
+			"anrede": "Herr",
+			"vorname": "Paul",
+			"nachname": "Paulsen"
+		}
+	]
+}

@@ -1,0 +1,12 @@
+<personen>
+	<person>
+		<anrede>Herr</anrede>
+		<vorname>Paul</vorname>
+		<nachname>Paulsen</nachname>
+	</person>
+	<person>
+		<anrede>Herr</anrede>
+		<vorname>Fritz</vorname>
+		<nachname>Walter</nachname>
+	</person>
+</personen>
