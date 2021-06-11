@@ -1,5 +1,5 @@
-var para = document.getElementById("id4711");
-para.textContent = 'Hallo vom Javascript';
+//var para = document.getElementById("id4711");
+//para.textContent = 'Hallo vom Javascript';
 
 
 //fetch("personen.json")
@@ -19,6 +19,9 @@ function getTxtFromJsonUndPackInsHTML(myjson) {
 	var tabelle=document.getElementById("tid01");
 	var i=1;
 	var pictogramm="";
+	var picto_loesch="<td><img src='bilder/trash.svg'></td>";
+    var picto_aend="<td><img src='bilder/pen.svg'></td>";
+
 	for(var laufvariable of myjson.personen){
 		if (laufvariable.anrede == "Herr") 
 			pictogramm = "<td><img src='bilder/mann.png'></td>";
@@ -41,6 +44,8 @@ function getTxtFromJsonUndPackInsHTML(myjson) {
 				                             + `<td> ${laufvariable.vorname} </td>`
 				                             + `<td> ${laufvariable.nachname} </td>`
                                     		 + pictogramm
+                                             + picto_aend
+                                             + picto_loesch
                                              + "</tr>");
 
     i++;
