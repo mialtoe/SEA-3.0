@@ -56,4 +56,35 @@ function getTxtFromJsonUndPackInsHTML(myjson) {
 fetch("personen.json")
 	.then(getJson) 								//  entspricht: .then( irgendwas => irgendwas.json() )
 	.then(getTxtFromJsonUndPackInsHTML) 		// entpricht: cell.textContent = myjson.personen[0].vorname);
+
+
+function oninputclick(event) {
+	event.preventDefault();    // verhindert, dass Event weiter vom Browser bearbeitet wird
+	console.log("Button betätigt");
 	
+	var salutation = document.getElementById('salut').value;
+	var vorname = document.getElementById('fname').value;
+	var nname = document.getElementById('lname').value;
+	console.log(salutation,vorname,nname);
+	var jsondata=`{ "anrede": "${salutation}", "vorname": "${vorname}", "nachname": "${nname}"}`;
+	console.log(jsondata);
+	
+	fetch("http://localhost:8080/submitPerson", {
+		method: 'POST',
+		body: jsondata,
+		headers: { 'Content-Type': 'application/json'}
+	})
+}
+
+var button = document.getElementById('button');
+button.addEventListener('click', oninputclick);
+
+
+
+
+
+	
+
+
+
+
