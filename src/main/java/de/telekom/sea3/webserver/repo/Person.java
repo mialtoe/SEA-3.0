@@ -1,4 +1,4 @@
-package de.telekom.sea3.webserver;
+package de.telekom.sea3.webserver.repo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
