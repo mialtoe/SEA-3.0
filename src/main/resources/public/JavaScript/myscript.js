@@ -53,7 +53,8 @@ function getTxtFromJsonUndPackInsHTML(myjson) {
 	}
 }
 
-fetch("personen.json")
+//fetch("personen.json")
+fetch("http://localhost:8080/json/persons/all")
 	.then(getJson) 								//  entspricht: .then( irgendwas => irgendwas.json() )
 	.then(getTxtFromJsonUndPackInsHTML) 		// entpricht: cell.textContent = myjson.personen[0].vorname);
 
@@ -69,7 +70,7 @@ function oninputclick(event) {
 	var jsondata=`{ "anrede": "${salutation}", "vorname": "${vorname}", "nachname": "${nname}"}`;
 	console.log(jsondata);
 	
-	fetch("http://localhost:8080/submitPerson", {
+	fetch("http://localhost:8080/json/person", {
 		method: 'POST',
 		body: jsondata,
 		headers: { 'Content-Type': 'application/json'}
