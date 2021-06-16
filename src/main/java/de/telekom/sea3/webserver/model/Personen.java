@@ -7,9 +7,9 @@ public class Personen {
     
 	private List<Person> personen= new ArrayList<Person>();
 
-	public Personen(List<Person> all) {
-        this.personen=all;
-	}
+//	public Personen(List<Person> all) {
+//        this.personen=all;
+//	}
 
 	public List<Person> getPersonen() {
 		return personen;
@@ -18,5 +18,21 @@ public class Personen {
 	public void setPersonen(List<Person> personen) {
 		this.personen = personen;
 	} 
+	
+	public void addPerson(Person p) {
+		personen.add(p);
+	}
+	
+	public Person getPerson(int id) {
+		return personen.get(id);
+	}
+	
+	public int size() {
+		return personen.size();
+	}	
+
+	public void deletePerson(int idInt) {
+		personen.remove(idInt);
+	}
 	
 }

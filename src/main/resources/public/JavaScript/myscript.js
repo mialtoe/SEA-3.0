@@ -81,6 +81,22 @@ var button = document.getElementById('button');
 button.addEventListener('click', oninputclick);
 
 
+function oninputdelclick(event) {
+	event.preventDefault();    // verhindert, dass Event weiter vom Browser bearbeitet wird
+	console.log("Del Button betätigt");
+	
+	var id = document.getElementById('loeschid').value;
+	console.log(id);
+	
+	fetch(`http://localhost:8080/json/person/${id}`, {
+		method: 'DELETE',
+	})
+}
+
+
+var buttondel = document.getElementById('loesch');
+buttondel.addEventListener('click', oninputdelclick);
+
 
 
 

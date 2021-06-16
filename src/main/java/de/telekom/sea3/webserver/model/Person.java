@@ -10,6 +10,7 @@ public class Person {
 		this.vorname = vorname;
 		this.nachname = nachname;
 		this.anrede = anrede;
+		
 	}
 	
 	public String getVorname() {
