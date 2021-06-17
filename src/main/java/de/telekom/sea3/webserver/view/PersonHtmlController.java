@@ -55,5 +55,14 @@ public class PersonHtmlController {
 		return "count";
 	}
 	
+
+	@GetMapping("/personen")                   // URL:"http://localhost:8080/personen"
+	public String getPersonen(Model model) {
+		
+//		model.addAttribute("Personen", personService.getPerson(0));
+		model.addAttribute("Personen", personService.getAllPersons().getPersonen());
+		return "persons";
+	}
+
 	
 }

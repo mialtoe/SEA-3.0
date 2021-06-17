@@ -57,7 +57,7 @@ function getTxtFromJsonUndPackInsHTML(myjson) {
 
 //fetch("personen.json")
 function getAllPersons(){
-  fetch("http://localhost:8080/json/persons/all")
+  fetch("/json/persons/all")
 	.then(getJson) 								//  entspricht: .then( irgendwas => irgendwas.json() )
 	.then(getTxtFromJsonUndPackInsHTML); 		// entpricht: cell.textContent = myjson.personen[0].vorname);
 }
@@ -75,11 +75,16 @@ function oninputclick(event) {
 	var jsondata=`{ "anrede": "${salutation}", "vorname": "${vorname}", "nachname": "${nname}","email": "${email}"}`;
 	console.log(jsondata);
 	
-	fetch("http://localhost:8080/json/person", {
+	fetch("/json/person", {
 		method: 'POST',
 		body: jsondata,
 		headers: { 'Content-Type': 'application/json'}
 	})
+	.then(Array.prototype.slice.call(document.getElementsByTagName('tr')).forEach(
+  		function(item) {
+    	item.remove();
+	}))
+	.then(getAllPersons());
 }
 
 var button = document.getElementById('button');
@@ -93,8 +98,13 @@ function oninputdelclick(event) {
 	var id = document.getElementById('loeschid').value;
 	console.log(id);
 	
-	fetch(`http://localhost:8080/json/person/${id}`, {
-		method: 'DELETE' });
+	fetch(`/json/person/${id}`, {
+		method: 'DELETE' })
+	.then(Array.prototype.slice.call(document.getElementsByTagName('tr')).forEach(
+  		function(item) {
+    	item.remove();
+	}))
+	.then(getAllPersons());
 }
 
 

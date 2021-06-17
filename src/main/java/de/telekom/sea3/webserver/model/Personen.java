@@ -3,6 +3,8 @@ package de.telekom.sea3.webserver.model;
 import java.util.ArrayList;
 import java.util.List;
 
+
+// wird benötogt um die JSON Struktur korrekt zu erstellen --> Personen - Struktur in JSON
 public class Personen {
     
 	private List<Person> personen= new ArrayList<Person>();

@@ -27,7 +27,8 @@ public class PersonService {
 	public Personen getAllPersons() {
 		return personRepository.getAll();
 	}
-	
+
+
 	public Person getPerson(int id) {
 		//return new Person("Hans","Meiser","Herr");
 		return personRepository.getPerson(id);
