@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang='de' xmlns:th="http://thymeleaf.org">
+
+    <head> 
+        <meta charset='utf-8'> <meta name='viewport' content='width=device-width, initial-scale=1.0'> 
+        <title>Titel</title>
+    </head>
+
+
+    <body>
+        <ul th:each="Person : ${Personen}">
+           <li th:text="${Person.Anrede}">Anrede</li>
+           <li th:text="${Person.Vorname}">Vorname</li>
+           <li th:text="${Person.Nachname}">Nachname</li>
+        </ul>
+
+    </body>
+
+</html>

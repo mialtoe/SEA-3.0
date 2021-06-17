@@ -33,6 +33,7 @@
 				<th scope="col">Anrede</th>
 				<th scope="col">Vorname</th>
 				<th scope="col">Nachname</th>
+				<th scope="col">Email</th>
 				<th scope="col">Picto</th>
 				<th scope="col">Edit</th>
 			    <th scope="col">Del</th>
@@ -78,11 +79,24 @@
 				    </select> 
 				<br><br>    
 				<label for="fname">Vorname:</label> <input type="text" id="fname" name="fname"> 
-				<label for="lname">Nachname:</label> <input type="text" id="lname" name="lname"><br><br>
+				<label for="lname">Nachname:</label> <input type="text" id="lname" name="lname">
+				<label for="email">Email:</label> <input type="text" id="email" name="email"><br><br>
 				<center><input id="button" type="button" value="Add"></center>
 				<br><br>
 			</form>
 	</article>
+
+	<article style="background-color:lightgreen;">
+  	    <p id="id4713">Person löschen</p>
+  	    <hr>
+			<form id="myForm1">
+				<label for="loeschid">zu löschende ID:</label> <input type="text" id="loeschid" name="loeschid"> 
+				<center><input id="loesch" type="button" value="Delete"></center>
+				<br><br>
+			</form>
+	</article>
+
+
 	
 	<script src="JavaScript/myscript.js" type="module"></script>
 
