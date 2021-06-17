@@ -1,8 +1,12 @@
 <!DOCTYPE html> 
-<html lang='de'>
-<head> 
+<html lang='de' xmlns:th="http://thymeleaf.org">
+    <head> 
         <meta charset='utf-8'> <meta name='viewport' content='width=device-width, initial-scale=1.0'> 
         <title>Titel</title>
-</head>
-<body>Size: %d </body>
+    </head>
+
+
+    <body>
+        <h1 th:text="|Hello ${name}|">Hello World!</h1>
+    </body>
  </html>
