@@ -25,7 +25,8 @@
 	<h1>Liste der Personen</h1>
 	<!-- p id="id4711">Abschnitt 1</p-->
 
-	<table class="table table-striped table-info" id="tid01">
+   <div id="list" class="tabcontent">
+	<table class="table table-striped table-info" id="idtable">
 	<!-- table class="table-primary"-->
 		<thead>
 			<tr>
@@ -39,7 +40,7 @@
 			    <th scope="col">Del</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody id="idbody">
 
 <!--
 			<tr>
@@ -64,8 +65,8 @@
 				<td><img src="bilder/mann.png"></td>
 			</tr-->
 		</tbody>
-	</table>
-	
+	  </table>
+	</div>
 
 	<article style="background-color:lightyellow;">
   	    <p id="id4712">Person hinzufügen</p>
@@ -82,6 +83,7 @@
 				<label for="lname">Nachname:</label> <input type="text" id="lname" name="lname">
 				<label for="email">Email:</label> <input type="text" id="email" name="email"><br><br>
 				<center><input id="button" type="button" value="Add"></center>
+                <center><input id="refresh" type="button" value="Refresh"></center>
 				<br><br>
 			</form>
 	</article>
@@ -98,7 +100,8 @@
 
 
 	
-	<script src="JavaScript/myscript.js" type="module"></script>
-
+	<!-- script src="JavaScript/myscript.js" type="module"></script-->
+	<script src="JavaScript/myscript.js"></script>
+	
 </body>
 </html>
