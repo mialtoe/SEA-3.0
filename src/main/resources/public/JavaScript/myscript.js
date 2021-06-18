@@ -8,6 +8,16 @@
 //   .then( myjson => console.log(myjson.personen));
 //   .then( myjson => console.log(myjson.personen[0].vorname));
 
+//document.getElementById("list").click();
+
+getAllPersons();
+
+function delPerson(id){
+	    fetch(`/json/person/${id}`, {
+		       method: 'DELETE' })
+        .then(getAllPersons());
+         console.log("DelPerson!"+id);
+}
 
 
 // json einlesen
@@ -16,13 +26,19 @@ function getJson(irgendwas) {
 }
 // celle ersetzen
 function getTxtFromJsonUndPackInsHTML(myjson) {
-	var tabelle=document.getElementById("tid01");
+	var tabelle=document.getElementById("idbody");
 	var i=1;
 	var pictogramm="";
-	var picto_loesch="<td><img src='bilder/trash.svg'></td>";
+/*	var picto_loesch="<td><img src='bilder/trash.svg'></td>";*/
     var picto_aend="<td><img src='bilder/pen.svg'></td>";
 
+    tabelle.innerHTML="";
 
+/*	Array.prototype.slice.call(document.getElementsByTagName('tr')).forEach(
+  		function(item) {
+    	item.remove();
+	});*/
+	
 	for(var laufvariable of myjson.personen){
 		if (laufvariable.anrede == "Herr") 
 			pictogramm = "<td><img src='bilder/mann.png'></td>";
@@ -31,13 +47,7 @@ function getTxtFromJsonUndPackInsHTML(myjson) {
         else
 		    pictogramm = "<td><img src='bilder/joker.png'></td>";
 
-/*		tabelle.insertAdjacentHTML("beforeend","<tr>"
-		                                     + "<th scope='row'>"+i+"</th>"
-				                             + "<td>"+ laufvariable.anrede +"</td>"
-				                             + "<td>"+ laufvariable.vorname +"</td>"
-				                             + "<td>"+ laufvariable.nachname +"</td>"
-                                    		 + pictogramm
-                                             + "</tr>");*/
+
 		tabelle.insertAdjacentHTML("beforeend",
 		                                       "<tr>"
 		                                     + `<th scope='row'> ${i} </th>`
@@ -47,7 +57,7 @@ function getTxtFromJsonUndPackInsHTML(myjson) {
 				                             + `<td> ${laufvariable.email} </td>`
                                     		 + pictogramm
                                              + picto_aend
-                                             + picto_loesch
+                                             + `<td><img id='delete${i}'src='bilder/trash.svg' onclick='delPerson(${i})'></td>`
                                              + "</tr>");
 
     i++;
@@ -57,7 +67,13 @@ function getTxtFromJsonUndPackInsHTML(myjson) {
 
 //fetch("personen.json")
 function getAllPersons(){
-  fetch("/json/persons/all")
+  fetch("/json/persons/all",
+           {
+			  method: 'GET',
+			  headers: {
+				   'Content-Type': 'application/json'
+			}
+		   })
 	.then(getJson) 								//  entspricht: .then( irgendwas => irgendwas.json() )
 	.then(getTxtFromJsonUndPackInsHTML); 		// entpricht: cell.textContent = myjson.personen[0].vorname);
 }
@@ -80,10 +96,6 @@ function oninputclick(event) {
 		body: jsondata,
 		headers: { 'Content-Type': 'application/json'}
 	})
-	.then(Array.prototype.slice.call(document.getElementsByTagName('tr')).forEach(
-  		function(item) {
-    	item.remove();
-	}))
 	.then(getAllPersons());
 }
 
@@ -100,18 +112,25 @@ function oninputdelclick(event) {
 	
 	fetch(`/json/person/${id}`, {
 		method: 'DELETE' })
-	.then(Array.prototype.slice.call(document.getElementsByTagName('tr')).forEach(
-  		function(item) {
-    	item.remove();
-	}))
 	.then(getAllPersons());
+}
+
+function oninputrefreshclick(event) {
+	event.preventDefault();    // verhindert, dass Event weiter vom Browser bearbeitet wird
+	console.log("Refresh Button betätigt");
+	getAllPersons();
 }
 
 
 var buttondel = document.getElementById('loesch');
 buttondel.addEventListener('click', oninputdelclick);
 
-getAllPersons();
+
+var buttonrefresh = document.getElementById('refresh');
+buttonrefresh.addEventListener('click', oninputrefreshclick);
+
+
+//getAllPersons();
 
 
 	
