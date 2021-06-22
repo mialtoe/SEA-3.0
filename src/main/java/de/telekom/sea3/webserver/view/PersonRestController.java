@@ -1,5 +1,7 @@
 package de.telekom.sea3.webserver.view;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 //import org.springframework.stereotype.*;
@@ -8,13 +10,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import de.telekom.sea3.webserver.model.*;
+import de.telekom.sea3.webserver.repo.PersonRepository;
+
 
 //import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import de.telekom.sea3.webserver.model.Person;
 import de.telekom.sea3.webserver.model.Personen;
-import de.telekom.sea3.webserver.model.Size;
+//import de.telekom.sea3.webserver.model.Size;
 import de.telekom.sea3.webserver.service.PersonService;
 
 
@@ -37,6 +42,7 @@ public class PersonRestController {
 	@GetMapping("/json/persons/all")                   // URL:"http://localhost:8080/json/persons/all"
 	public Personen getAllPersons() {
 	   Personen personen = personService.getAllPersons();
+
        return personen;  
 		
 		/* String string1 = "{\n"                        // temporär zum Test manuell erzeugtes Json
@@ -63,7 +69,7 @@ public class PersonRestController {
 		return string1; */
 	}
 	
-	@GetMapping("/json/persons/size")                   // URL:"http://localhost:8080/json/persons/all"
+/*	@GetMapping("/json/persons/size")                   // URL:"http://localhost:8080/json/persons/all"
 	public Size getSize() {
 		return new Size(personService.getSize());
 
@@ -73,8 +79,8 @@ public class PersonRestController {
 				+ "}";
         string = String.format(string,  size);
 		
-		return string;*/
-	}
+		return string;
+	}*/
 
 	@GetMapping("/json/person/{id}")                   
 	public Person getPerson(@PathVariable("id") int id) {

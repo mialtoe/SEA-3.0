@@ -1,5 +1,7 @@
 package de.telekom.sea3.webserver.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,29 +22,38 @@ public class PersonService {
 		System.out.println("PersonRepo angelegt"+personRepository.toString());
 	}
 	
-	public int getSize() {
-		return personRepository.getSize();
+	public long getSize() {
+		return personRepository.count();
 	}
 
 	public Personen getAllPersons() {
-		return personRepository.getAll();
+		Personen ps = new Personen();
+		for (Person p:personRepository.findAll()) {
+			ps.getPersonen().add(p);
+		}
+		return ps;
+//		return personRepository.findAll();
 	}
-
+	
 
 	public Person getPerson(int id) {
 		//return new Person("Hans","Meiser","Herr");
-		return personRepository.getPerson(id);
+		Person p = personRepository.findById(id).get();
+		System.out.println("Get*******************:"+p.getNachname()+","+p.getVorname());
+		return p;
 	}
 
 	public Person addPerson(Person person) {
-		personRepository.addPerson(person);
+		personRepository.save(person);
 		System.out.println("Person wurde angelegt");
 		return person;
 	}
 
 	public void deletePerson(int idInt) {
 		System.out.println("Person wurde gelöscht.");
-		personRepository.deletePerson(idInt);
+		personRepository.deleteById(idInt);
 	}
+	
+	
 	
 }

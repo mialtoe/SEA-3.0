@@ -1,18 +1,41 @@
 package de.telekom.sea3.webserver.model;
 
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
+
+@Entity
+@Table(name="person")
 public class Person {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	
+	@Column(name="vorname")
 	private String vorname;
+	
+	@Column(name="nachname")
 	private String nachname;
+	
+	@Column(name="anrede")
 	private String anrede;
+	
+	@Column(name="email")
 	private String email;
 
+	public Person () {
+    }
+	
 	public Person (String vorname, String nachname, String anrede, String email) {
 		this.vorname = vorname;
 		this.nachname = nachname;
 		this.anrede = anrede;
 		this.email = email;
-		
 	}
 	
 	public String getEmail() {
@@ -41,4 +64,13 @@ public class Person {
 	public void setAnrede(String anrede) {
 		this.anrede = anrede;
 	}
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+		  
 }
