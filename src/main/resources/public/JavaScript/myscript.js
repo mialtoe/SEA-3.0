@@ -19,6 +19,44 @@ function delPerson(id){
          console.log("DelPerson!"+id);
 }
 
+function changePerson(id){
+	    fetch(`/json/person/${id}`, {
+		       method: 'get' })
+        .then(getJson) 								//  entspricht: .then( irgendwas => irgendwas.json() )
+        .then(changeAddress);
+
+        
+//         console.log("ID"+oldemail);
+
+         
+}
+
+function changeAddress(myjson){
+
+    console.log("alte Emailadresse: "+myjson.email);
+		
+    name = prompt("Bitte geben Sie die neue Emailadresse ein:", myjson.email);
+
+    console.log("neue Emailadresse: "+name);
+
+	var salutation = myjson.anrede;
+	var vorname = myjson.vorname;
+	var nname = myjson.nachname;
+	var id= myjson.id;
+	var version= myjson.version;
+ 
+	console.log(salutation,vorname,nname,email);
+	var jsondata=`{ "id": ${id}, "anrede": "${salutation}", "vorname": "${vorname}", "nachname": "${nname}","email": "${name}", "version": ${version}}`;
+	console.log(jsondata);
+	
+	fetch("/json/person", {
+		method: 'POST',
+		body: jsondata,
+		headers: { 'Content-Type': 'application/json'}
+	})
+	.then(getAllPersons());
+}
+
 
 // json einlesen
 function getJson(irgendwas) {
@@ -30,7 +68,7 @@ function getTxtFromJsonUndPackInsHTML(myjson) {
 	var i=1;
 	var pictogramm="";
 /*	var picto_loesch="<td><img src='bilder/trash.svg'></td>";*/
-    var picto_aend="<td><img src='bilder/pen.svg'></td>";
+/*    var picto_aend="<td><img src='bilder/pen.svg'></td>"; */
 
     tabelle.innerHTML="";
 
@@ -47,18 +85,20 @@ function getTxtFromJsonUndPackInsHTML(myjson) {
         else
 		    pictogramm = "<td><img src='bilder/joker.png'></td>";
 
-
+        temail=laufvariable.email;
+/*        console.log("IDddd"+temail+" "+laufvariable.email);*/
 		tabelle.insertAdjacentHTML("beforeend",
 		                                       "<tr>"
-/*		                                     + `<th scope='row'> ${i} </th>` */
+/*		                                     + `<th scope='row'> ${i} </th>`*/
 				                             + `<td> ${laufvariable.id}</td>`
 				                             + `<td> ${laufvariable.anrede}</td>`
 				                             + `<td> ${laufvariable.vorname} </td>`
 				                             + `<td> ${laufvariable.nachname} </td>`
 				                             + `<td> ${laufvariable.email} </td>`
                                     		 + pictogramm
-                                             + picto_aend
-                                             + `<td><img id='delete${laufvariable.id}'src='bilder/trash.svg' onclick='delPerson(${laufvariable.id})'></td>`
+/*                                             + picto_aend*/
+                                             + `<td><img id='change${i}'src='bilder/pen.svg' onclick='changePerson(${laufvariable.id})'></td>`
+                                             + `<td><img id='delete${i}'src='bilder/trash.svg' onclick='delPerson(${laufvariable.id})'></td>`
                                              + "</tr>");
 
     i++;
@@ -132,10 +172,3 @@ buttonrefresh.addEventListener('click', oninputrefreshclick);
 
 
 //getAllPersons();
-
-
-	
-
-
-
-

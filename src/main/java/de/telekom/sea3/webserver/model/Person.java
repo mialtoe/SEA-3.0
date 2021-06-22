@@ -2,6 +2,7 @@ package de.telekom.sea3.webserver.model;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Version;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,10 @@ public class Person {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@Column(name="version")
+	@Version                    // verhindert lost SQL, gleichzeitiges Ändern  
+	private Long version;
+
 	@Column(name="vorname")
 	private String vorname;
 	
@@ -72,5 +77,12 @@ public class Person {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-		  
+
+	public Long getVersion() {
+		return version;
+	}
+
+	public void setVersion(Long version) {
+		this.version = version;
+	}
 }
