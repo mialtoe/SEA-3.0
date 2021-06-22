@@ -50,14 +50,15 @@ function getTxtFromJsonUndPackInsHTML(myjson) {
 
 		tabelle.insertAdjacentHTML("beforeend",
 		                                       "<tr>"
-		                                     + `<th scope='row'> ${i} </th>`
+/*		                                     + `<th scope='row'> ${i} </th>` */
+				                             + `<td> ${laufvariable.id}</td>`
 				                             + `<td> ${laufvariable.anrede}</td>`
 				                             + `<td> ${laufvariable.vorname} </td>`
 				                             + `<td> ${laufvariable.nachname} </td>`
 				                             + `<td> ${laufvariable.email} </td>`
                                     		 + pictogramm
                                              + picto_aend
-                                             + `<td><img id='delete${i}'src='bilder/trash.svg' onclick='delPerson(${i})'></td>`
+                                             + `<td><img id='delete${laufvariable.id}'src='bilder/trash.svg' onclick='delPerson(${laufvariable.id})'></td>`
                                              + "</tr>");
 
     i++;
