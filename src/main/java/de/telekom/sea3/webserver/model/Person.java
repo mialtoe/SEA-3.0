@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import java.time.LocalDate;
 
 
-
+//CREATE TABLE person ( id BIGINT PRIMARY KEY AUTO_INCREMENT NOT NULL, nachname VARCHAR(255), vorname VARCHAR(255), email VARCHAR(255), anrede VARCHAR(12), gebdatum DATE, version BIGINT NOT NULL);
 
 @Entity
 @Table(name="person")
