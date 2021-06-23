@@ -35,9 +35,9 @@ function changeAddress(myjson){
 
     console.log("alte Emailadresse: "+myjson.email);
 		
-    name = prompt("Bitte geben Sie die neue Emailadresse ein:", myjson.email);
+    newemail = prompt("Bitte geben Sie die neue Emailadresse ein:", myjson.email);
 
-    console.log("neue Emailadresse: "+name);
+    console.log("neue Emailadresse: "+newemail);
 
 	var salutation = myjson.anrede;
 	var vorname = myjson.vorname;
@@ -47,7 +47,7 @@ function changeAddress(myjson){
 	var gebdatum= myjson.gebdatum;
  
 	console.log(salutation,vorname,nname,email);
-	var jsondata=`{ "id": ${id}, "anrede": "${salutation}", "vorname": "${vorname}", "nachname": "${nname}","email": "${name}", "gebdatum": "${gebdatum}","version": ${version}}`;
+	var jsondata=`{ "id": ${id}, "anrede": "${salutation}", "vorname": "${vorname}", "nachname": "${nname}","email": "${newemail}", "gebdatum": "${gebdatum}","version": ${version}}`;
 	console.log(jsondata);
 	
 	fetch("/json/person", {
