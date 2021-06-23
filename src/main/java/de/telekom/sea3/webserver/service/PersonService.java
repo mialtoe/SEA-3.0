@@ -12,34 +12,33 @@ import de.telekom.sea3.webserver.repo.PersonRepository;
 
 @Service
 public class PersonService {
-      
+
 	private PersonRepository personRepository;
-    
+
 	@Autowired
 	public PersonService(PersonRepository personRepository) {
 		this.personRepository = personRepository;
-		System.out.println("PersonService angelegt"+this.toString());
-		System.out.println("PersonRepo angelegt"+personRepository.toString());
+		System.out.println("PersonService angelegt" + this.toString());
+		System.out.println("PersonRepo angelegt" + personRepository.toString());
 	}
-	
+
 	public long getSize() {
 		return personRepository.count();
 	}
 
 	public Personen getAllPersons() {
 		Personen ps = new Personen();
-		for (Person p:personRepository.findAll()) {
+		for (Person p : personRepository.findAll()) {
 			ps.getPersonen().add(p);
 		}
 		return ps;
 //		return personRepository.findAll();
 	}
-	
 
 	public Person getPerson(int id) {
-		//return new Person("Hans","Meiser","Herr");
+		// return new Person("Hans","Meiser","Herr");
 		Person p = personRepository.findById(id).get();
-		System.out.println("Get*******************:"+p.getNachname()+","+p.getVorname());
+		System.out.println("Get*******************:" + p.getNachname() + "," + p.getVorname());
 		return p;
 	}
 
@@ -50,10 +49,12 @@ public class PersonService {
 	}
 
 	public void deletePerson(int idInt) {
-		System.out.println("Person wurde gelöscht.");
-		personRepository.deleteById(idInt);
+		try {
+			personRepository.deleteById(idInt);
+			System.out.println(String.format("Person mit ID %d wurde gelöscht.", idInt));
+		} catch (Exception e) {
+			System.out.println(String.format("Person mit ID %d wurde nicht zum Löschen gefunden", idInt));
+		}
 	}
-	
-	
-	
+
 }

@@ -7,6 +7,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import java.time.LocalDate;
+
+
 
 
 @Entity
@@ -33,16 +36,29 @@ public class Person {
 	@Column(name="email")
 	private String email;
 
+	@Column(name="gebdatum")
+	private LocalDate gebdatum;
+	
 	public Person () {
     }
 	
-	public Person (String vorname, String nachname, String anrede, String email) {
+	
+	public Person (String vorname, String nachname, String anrede, String email, LocalDate gebdatum) {
 		this.vorname = vorname;
 		this.nachname = nachname;
 		this.anrede = anrede;
 		this.email = email;
+		this.gebdatum = gebdatum;
 	}
-	
+
+	public LocalDate getGebdatum() {
+		return gebdatum;
+	}
+
+	public void setGebdatum(LocalDate gebdatum) {
+		this.gebdatum = gebdatum;
+	}
+
 	public String getEmail() {
 		return email;
 	}
