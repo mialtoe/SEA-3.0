@@ -51,7 +51,7 @@ function changeAddress(myjson){
 	console.log(jsondata);
 	
 	fetch("/json/person", {
-		method: 'POST',
+		method: 'PUT',
 		body: jsondata,
 		headers: { 'Content-Type': 'application/json'}
 	})
