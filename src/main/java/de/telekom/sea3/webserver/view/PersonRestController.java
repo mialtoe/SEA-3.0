@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 //import de.telekom.sea3.webserver.model.*;
 //import de.telekom.sea3.webserver.repo.PersonRepository;
@@ -109,5 +110,15 @@ public class PersonRestController {
 		int idInt = Integer.parseInt(id);
 		personService.deletePerson(idInt);
 	}
+	
+	//zum Aufruf von selbsgebastelten SQL
+	//Aufruf: http://localhost:8080/json/select?search=<suchstring>     (name oder vorname)
+	@GetMapping("/json/select")
+	public Personen selpersonen(@RequestParam (name="search", required=false) String searchstring) {
+		logger.info(String.format("SEARCHSTRING %s", searchstring));
+		Personen ps= personService.selPersonen(searchstring);
+		return ps;
+	}
+	
 	
 }

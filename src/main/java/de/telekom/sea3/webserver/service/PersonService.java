@@ -67,5 +67,15 @@ public class PersonService {
 //			System.out.println(String.format("Person mit ID %d wurde nicht zum Löschen gefunden", idInt));
 		}
 	}
+	
+	
+	// selbstgebasteltes SQL 
+	public Personen selPersonen(String searchstring) {
+		Personen ps = new Personen();
+		for (Person p : personRepository.selectPersonen(searchstring)) {
+			ps.getPersonen().add(p);
+		}
+		return ps;
+	}
 
 }
