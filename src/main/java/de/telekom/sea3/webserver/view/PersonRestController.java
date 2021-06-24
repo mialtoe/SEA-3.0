@@ -1,5 +1,8 @@
 package de.telekom.sea3.webserver.view;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 //import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +33,15 @@ import de.telekom.sea3.webserver.service.PersonService;
 public class PersonRestController {
 	
 	private PersonService personService;
+	Logger logger = LoggerFactory.getLogger(this.getClass());
     
 	@Autowired
 	public PersonRestController(PersonService personService) {
 		this.personService = personService;
-		System.out.println("PersonController angelegt"+this.toString());
-		System.out.println("ServiceController angelegt"+personService.toString());
-
+		logger.info(String.format("PersonController angelegt %s", this.toString()));
+		logger.info(String.format("ServiceController angelegt %s", personService.toString()));
+//		System.out.println("PersonController angelegt"+this.toString());
+//		System.out.println("ServiceController angelegt"+personService.toString());
 	}	   
 	   
 	
