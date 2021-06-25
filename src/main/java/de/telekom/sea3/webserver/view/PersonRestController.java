@@ -28,7 +28,11 @@ import de.telekom.sea3.webserver.model.Personen;
 import de.telekom.sea3.webserver.service.PersonService;
 
 
-
+/**
+ * 
+ * @author Michael Altoe
+ *
+ */
 
 @RestController
 public class PersonRestController {
@@ -36,6 +40,10 @@ public class PersonRestController {
 	private PersonService personService;
 	Logger logger = LoggerFactory.getLogger(this.getClass());
     
+	/**
+	 * Konstruktor (@Autowired)
+	 * @param personService Verbindung zur Serviceschicht
+	 */
 	@Autowired
 	public PersonRestController(PersonService personService) {
 		this.personService = personService;
@@ -45,7 +53,10 @@ public class PersonRestController {
 //		System.out.println("ServiceController angelegt"+personService.toString());
 	}	   
 	   
-	
+	/**
+	 * Endpunkt /json/persons/all um alle Personen auszulesen 
+	 * @return Vorhandene Personen werden zurück gegeben
+	 */
 	@GetMapping("/json/persons/all")                   // URL:"http://localhost:8080/json/persons/all"
 	public Personen getAllPersons() {
 	   Personen personen = personService.getAllPersons();
@@ -89,28 +100,52 @@ public class PersonRestController {
 		return string;
 	}*/
 
+    /**
+     * Endpunkt um eine einzelne Person zu holen, identifiziert über die Id
+     * @param id Id unter der die gesuchte Person abgelegt ist
+     * @return Die gefundene Person wird zurück gegeben.
+     */
 	@GetMapping("/json/person/{id}")                   
 	public Person getPerson(@PathVariable("id") int id) {
 		return personService.getPerson(id);
 	}
 
+	/**
+	 * Endpunkt um eine neue Person hinzu zu fügen.
+	 * @param person Person die hinzugefügt werden soll
+	 * @return Hinzugefügte Person wird zurück gegeben.
+	 */
 	@PostMapping("/json/person")                   
-	public Person addPerson(@RequestBody Person p) {
-		return personService.addPerson(p); 
+	public Person addPerson(@RequestBody Person person) {
+		return personService.addPerson(person); 
 	}
 	
+	/**
+	 * Endpunkt um ein Update auf eine Person durchzuführen
+	 * @param p Eine Person
+	 * @return Person auf die ein Update durcgeführt worden ist wird zurück gegeben.
+	 */
 	@PutMapping("/json/person")                   
 	public Person updatePerson(@RequestBody Person p) {
 		return personService.addPerson(p); 
 	}
 
-	
+	/**
+	 * Die Person mit der übergebenen Id wird gelöscht.
+	 * @param id Id unter der die Person abgelegt ist
+	 */
 	@DeleteMapping ("/json/person/{id}")
 	public void deletePerson(@PathVariable("id") String id){
 		int idInt = Integer.parseInt(id);
 		personService.deletePerson(idInt);
 	}
 	
+	/**
+	 * Test eines selbstgebastelten SQL, das nicht standardmäßig von Spring bereitgestellt wird
+	 * Aufruf: http://localhost:8080/json/select?search="searchstring"     
+	 * @param searchstring - hier name oder vorname
+	 * @return liefert die gesuchten Personen (Typ: Personen) zurück
+	 */
 	//zum Aufruf von selbsgebastelten SQL
 	//Aufruf: http://localhost:8080/json/select?search=<suchstring>     (name oder vorname)
 	@GetMapping("/json/select")

@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 //import de.telekom.sea3.webserver.model.Personen;
 import de.telekom.sea3.webserver.service.PersonService;
 
+/**
+ * HTML Controller (@Controller)
+ * @author Michael Altoe
+ *
+ */
+
 @Controller
 public class PersonHtmlController {
 	
@@ -19,12 +25,23 @@ public class PersonHtmlController {
 
 	private PersonService personService;
     
+	/**
+	 * Konstruktor (@Autowired)
+	 * @param personService PersonService
+	 */
 	@Autowired
 	public PersonHtmlController(PersonService personService) {
 		this.personService = personService;
 	}	   
 	
 	
+	/**
+	 * direkter Aufruf, Spring Framework gibt HTML zurück
+	 * URL:"http://localhost:8080/size
+	 * ermittelt die Anzahl Personen
+	 * @param model Verwendung von Model
+	 * @return Aufruf von size.html 
+	 */
 	@GetMapping("/size")                   // URL:"http://localhost:8080/size"
 	@ResponseBody                          // Spring Framework gibt HTML zurück
 	public String getSize(Model model) {
@@ -40,6 +57,14 @@ public class PersonHtmlController {
 		return string;
 	}
 
+
+	/**
+	 * Testmethode zum Umgang mit Thymeleaf
+	 * URL:"http://localhost:8080/size
+	 * ermittelt die Anzahl Personen
+	 * @param model Verwendung von Model
+	 * @return Aufruf von size.html 
+	 */
 	@GetMapping("/size2")                   // URL:"http://localhost:8080/size"
 	public String getSize2(Model model) {
 
@@ -47,7 +72,16 @@ public class PersonHtmlController {
 		return "size";
 	}
 
-	
+
+	/**
+	 * Testmethode zum Umgang mit Thymeleaf
+	 * URL:"http://localhost:8080/count
+	 * wenn Aufruf ohne Parameter wird Default "Hello World" ausgegeben
+	 * wenn Aufruf mit Parameter z.B. http://localhost:8080/count?name=Hugo wird "Hello Hugo" ausgegeben 
+	 * @param model Verwendung von Model
+	 * @param name optionaler Übergabeparameter 
+	 * @return Aufruf von count.html 
+	 */
 	@GetMapping("/count")                   // URL:"http://localhost:8080/count"
 	public String getCount(Model model,@RequestParam(value="name", required=false,defaultValue="World") String name) {
 		
@@ -55,7 +89,12 @@ public class PersonHtmlController {
 		return "count";
 	}
 	
-
+	/**
+	 * Testmethode zur Anzeige aller Personen über Thymeleaf
+	 * URL:"http://localhost:8080/personen
+	 * @param model Verwendung von Model
+	 * @return Die gefundenen Personen über persons.html angezeigt
+	 */
 	@GetMapping("/personen")                   // URL:"http://localhost:8080/personen"
 	public String getPersonen(Model model) {
 //		model.addAttribute("Personen", personService.getPerson(5));
