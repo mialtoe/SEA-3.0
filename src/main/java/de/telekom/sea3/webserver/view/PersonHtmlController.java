@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import de.telekom.sea3.webserver.service.PersonService;
 
 /**
- * HTML Controller (@Controller)
+ * <b>HTML Controller</b> (@Controller)
  * @author Michael Altoe
- *
  */
 
 @Controller
@@ -28,6 +27,7 @@ public class PersonHtmlController {
 	/**
 	 * Konstruktor (@Autowired)
 	 * @param personService PersonService
+	 *
 	 */
 	@Autowired
 	public PersonHtmlController(PersonService personService) {
@@ -74,10 +74,10 @@ public class PersonHtmlController {
 
 
 	/**
-	 * Testmethode zum Umgang mit Thymeleaf
-	 * URL:"http://localhost:8080/count
-	 * wenn Aufruf ohne Parameter wird Default "Hello World" ausgegeben
-	 * wenn Aufruf mit Parameter z.B. http://localhost:8080/count?name=Hugo wird "Hello Hugo" ausgegeben 
+	 * Testmethode zum Umgang mit Thymeleaf<br>
+	 * URL:"http://localhost:8080/count<br>
+	 * wenn Aufruf ohne Parameter wird Default "Hello World" ausgegeben<br>
+	 * wenn Aufruf mit Parameter z.B. http://localhost:8080/count?name=Hugo wird "Hello Hugo" ausgegeben<br> 
 	 * @param model Verwendung von Model
 	 * @param name optionaler Übergabeparameter 
 	 * @return Aufruf von count.html 

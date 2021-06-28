@@ -1,3 +1,6 @@
+/**
+ * Serviceschicht für die Verwaltung von Personen
+ */
 package de.telekom.sea3.webserver.service;
 
 import org.slf4j.Logger;
@@ -15,9 +18,10 @@ import de.telekom.sea3.webserver.model.*;
 import de.telekom.sea3.webserver.repo.PersonRepository;
 /**
  * Serviceschicht für die Verwaltung von Personen
- * 
- * @author Michael Altoe
  *
+ * @author Michael Altoe
+ * @version 1.0
+ * @since Version 1.0
  */
 @Service
 public class PersonService {
@@ -28,6 +32,7 @@ public class PersonService {
 	/**
 	 * Konstruktor (@Autowired) 
 	 * @param personRepository Personen Repository
+	 * 
 	 */
 	@Autowired
 	public PersonService(PersonRepository personRepository) {

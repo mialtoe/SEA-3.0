@@ -29,7 +29,8 @@ import de.telekom.sea3.webserver.service.PersonService;
 
 
 /**
- * 
+ * <b>Rest Controller;</b> definiert die Endpunkte mit seinen Methoden
+ * <br> 
  * @author Michael Altoe
  *
  */
@@ -104,6 +105,7 @@ public class PersonRestController {
      * Endpunkt um eine einzelne Person zu holen, identifiziert über die Id
      * @param id Id unter der die gesuchte Person abgelegt ist
      * @return Die gefundene Person wird zurück gegeben.
+     *
      */
 	@GetMapping("/json/person/{id}")                   
 	public Person getPerson(@PathVariable("id") int id) {

@@ -54,13 +54,16 @@ public class Personen {
 		return personen.get(id);
 	}
 
-	
-//	public int size() {
-//		return personen.size();
-//	}	
+	/**
+	 * @deprecated Alte Methode zum Ermitteln der vorhandenen Anzahl der Personen, wird mit Umstellung auf Spring Boot nicht mehr verwendet 
+	 * @return Anzahl der Personen
+	 */
+	public int size() {
+		return personen.size();
+	}	
 
 	/**
-	 * Löscht eine Person aus der Liste
+	 * @deprecated Alte Methode zum Löschen einer vorhandenen Personen aus der Liste, wird mit Umstellung auf Spring Boot nicht mehr verwendet
 	 * @param idInt Id der zu löschenden Person
 	 */
 	public void deletePerson(int idInt) {

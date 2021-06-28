@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * Spring Boot Webserver
  * @author Michael Altoe
- *
+ * 
  */
 
 @SpringBootApplication

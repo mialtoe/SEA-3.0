@@ -15,6 +15,7 @@ import de.telekom.sea3.webserver.model.Personen;
  * Findet mit Änderung auf JpaRepository keine Verwendung mehr!
  * 
  * @author Michael Altoe
+ * @deprecated Alte Klasse vor Umstellung auf Spring Boot. Wird ersetzt durch Interface {@link PersonRepository}. Funktionalität der Methoden verlagert in {@link de.telekom.sea3.webserver.service.PersonService} 
  *
  */
 
@@ -37,6 +38,7 @@ public class PersonRepositoryOld {
 	/**
 	 * Ermittelt Anzahl Personen
 	 * @return Anzahl der Personen wird zurück gegeben.
+	 * @deprecated Alte Methode zum Ermitteln der vorhandenen Anzahl der Personen, wird mit Umstellung auf Spring Boot nicht mehr verwendet
 	 */
 	public int getSize() {
 		return personen.size();
@@ -45,6 +47,7 @@ public class PersonRepositoryOld {
 	/**
 	 * Alle Personen werden ausgelesen
 	 * @return Alle gefundenen Personen (Typ: Personen) werden zurück gegeben
+	 * {@link getPerson(int)}
 	 */
 	public Personen getAll() {
 		return personen; 
