@@ -44,7 +44,7 @@ public class PersonService {
 	}
     
 	/**
-	 * Ermittelt die Anzahl der 
+	 * Ermittelt die Anzahl der vorhandenen Personen
 	 * @return Anzahl der vorhandenen Personen
 	 */
 	public long getSize() {
@@ -117,5 +117,12 @@ public class PersonService {
 		}
 		return ps;
 	}
+	/**
+	 * <span style="color:red">Test, ob protected Methode in JavaDoc-Doku auftaucht</span>
+	 */
+	protected void JavadocTest () {
+		
+	}
+
 
 }

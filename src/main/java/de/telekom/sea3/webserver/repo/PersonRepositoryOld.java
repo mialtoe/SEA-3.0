@@ -16,7 +16,7 @@ import de.telekom.sea3.webserver.model.Personen;
  * 
  * @author Michael Altoe
  * @deprecated Alte Klasse vor Umstellung auf Spring Boot. Wird ersetzt durch Interface {@link PersonRepository}. Funktionalität der Methoden verlagert in {@link de.telekom.sea3.webserver.service.PersonService} 
- *
+ * 
  */
 
 @Repository

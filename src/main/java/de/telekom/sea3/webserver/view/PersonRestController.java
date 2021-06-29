@@ -107,7 +107,7 @@ public class PersonRestController {
      * @return Die gefundene Person wird zurück gegeben.
      *
      */
-	@GetMapping("/json/person/{id}")                   
+ 	@GetMapping("/json/person/{id}")                   
 	public Person getPerson(@PathVariable("id") int id) {
 		return personService.getPerson(id);
 	}

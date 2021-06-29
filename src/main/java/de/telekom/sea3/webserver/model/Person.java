@@ -24,6 +24,9 @@ import java.time.LocalDate;
 @Table(name="person")
 public class Person {
 	
+	/**
+	 * @category
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
