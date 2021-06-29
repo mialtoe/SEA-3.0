@@ -49,7 +49,15 @@
 	             <!--destDir>../../../doc</destDir-->
              </configuration>
         </plugin>
-        
+        <plugin>
+             <groupId>org.apache.maven.plugins</groupId>
+             <artifactId>maven-source-plugin</artifactId>
+                 <configuration>
+                     <outputDirectory>target/source-jar</outputDirectory>
+                     <finalName>SEA-3.0-generated-jar-file</finalName>
+                     <attach>false</attach>
+                 </configuration>
+        </plugin>
     </plugins>
  </build>
 </project>
