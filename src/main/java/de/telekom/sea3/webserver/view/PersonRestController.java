@@ -45,6 +45,8 @@ public class PersonRestController {
 	 * Konstruktor (@Autowired)
 	 * @param personService Verbindung zur Serviceschicht
 	 */
+	
+	
 	@Autowired
 	public PersonRestController(PersonService personService) {
 		this.personService = personService;
