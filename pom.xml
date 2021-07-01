@@ -1,4 +1,7 @@
-<project>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" >
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.telekom.sea3.webserver</groupId>
     <artifactId>SEA-3.0</artifactId>
@@ -39,6 +42,25 @@
              <groupId>org.springframework.boot</groupId>
              <artifactId>spring-boot-maven-plugin</artifactId>
         </plugin>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-javadoc-plugin -->
+        <plugin>
+	         <groupId>org.apache.maven.plugins</groupId>
+	         <artifactId>maven-javadoc-plugin</artifactId>
+	         <configuration>
+	             <show>private</show>
+	             <!-- default Ausgabe dir ist target/site/apidocs --> 
+	             <!--destDir>../../../doc</destDir-->
+             </configuration>
+        </plugin>
+        <!--plugin>
+             <groupId>org.apache.maven.plugins</groupId>
+             <artifactId>maven-source-plugin</artifactId>
+                 <configuration>
+                     <outputDirectory>target/source-jar</outputDirectory>
+                     <finalName>SEA-3.0-generated-jar-file</finalName>
+                     <attach>false</attach>
+                 </configuration>
+        </plugin-->
     </plugins>
  </build>
 </project>
